@@ -1,0 +1,15 @@
+version: "3"
+services:
+  db:
+    build: ./docker/db
+    ports:
+      - "4334:4334"
+      - "4335:4335"
+      - "4336:4336"
+    volumes:
+      - db-data:/data
+    environment:
+      - ALT_HOST=db
+
+volumes:
+  db-data:

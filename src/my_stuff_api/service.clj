@@ -1,24 +1,17 @@
 (ns my-stuff-api.service
-  (:require [com.stuartsierra.component :as component]
-            [io.pedestal.http :as http]
-            [io.pedestal.http.body-params :as body-params]
-            [schema.coerce :as coerce]
-            [ring.util.response :as ring-resp]))
+  (:require [datomic.api :as d]))
 
-(defrecord Routes [routes]
-  component/Lifecycle
-  (start [this]
-    (assoc this :routes routes))
-  (stop  [this] (dissoc this :routes)))
+(def conn nil)
 
-(defn new-routes [routes] (map->Routes {:routes routes}))
+(defn add-stuff-owner [stuff-owner]
+  @(d/transact conn [{:db/id (d/tempid :db.part/user)
+                      :owner/name stuff-owner}]))
 
-(defn default
-  [request]
-  (ring-resp/response {:message "It Works"}))
+;(defn add-stuff [stuff owner-name]
+;  (let [stuff-id (d/tempid :db/part/user)]
+;    @(d/transact conn [])))
 
-(def common-interceptors
-  [(body-params/body-params) http/json-body])
-
-(def routes
-  #{["/" :get (conj common-interceptors `default)]})
+(defn find-all-stuff-owners []
+  (d/q '[:find ?stuff-owner
+         :where [_ :owner/name ?stuff-owner]]
+       (d/db conn)))
