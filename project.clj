@@ -6,4 +6,8 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [com.datomic/datomic-free "0.9.5697"]
                  [expectations "2.0.9"]]
+  :datomic {:schemas ["resources/datomic" ["schema.edn"]]}
+  :profiles {:dev
+             {:datomic {:config "resources/datomic/free-transactor-template.properties"
+                        :db-uri "datomic:free://localhost:4334/my-stuff-db"}}}
   )

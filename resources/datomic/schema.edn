@@ -8,7 +8,7 @@
 
  {:db/doc "All stuffs for one owner"
   :db/id #db/id[:db.part/db]
-  :db/ident :owner/stuff
+  :db/ident :owner/stuffs
   :db/valueType :db.type/ref
   :db/cardinality :db.cardinality/many
   :db.install/_attribute :db.part/db}
