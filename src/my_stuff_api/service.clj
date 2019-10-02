@@ -1,7 +1,17 @@
 (ns my-stuff-api.service
   (:require [datomic.api :as d]))
 
-(def conn nil)
+
+;run first time only
+;(def uri "datomic:free://localhost:4334/my-stuff-db?password=datomic")
+;(d/create-database uri)
+;(def conn (d/connect uri))
+;(d/transact conn (load-file "resources/datomic/schema.edn"))
+
+
+;; --------- Database connection --------
+(def uri "datomic:free://localhost:4334/my-stuff-db?password=datomic")
+(def conn (d/connect uri))
 
 ;; Helper functions
 
@@ -39,3 +49,18 @@
                 [?stuff :stuff/name ?stuff-name]]
        (d/db conn)
        owner-name))
+
+
+
+;; repl tests
+(comment
+
+
+  (add-stuff-owner "Paulo")
+  (add-stuff-owner "Andréia")
+  (add-stuff "Macbook" "Paulo")
+  (add-stuff "Mouse" "Paulo")
+  (find-all-stuff-owners)
+  (find-stuffs-for-owner "Paulo")
+
+  )

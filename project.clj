@@ -9,5 +9,5 @@
   :datomic {:schemas ["resources/datomic" ["schema.edn"]]}
   :profiles {:dev
              {:datomic {:config "resources/datomic/free-transactor-template.properties"
-                        :db-uri "datomic:free://localhost:4334/my-stuff-db"}}}
+                        :db-uri "datomic:free://localhost:4334/my-stuff-db?password=datomic"}}}
   )
