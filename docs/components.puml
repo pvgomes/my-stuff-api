@@ -1,0 +1,9 @@
+@startuml
+
+[owner]
+[stuff]
+[place]
+
+owner -> stuff : has
+stuff -> place : inside
+@enduml

@@ -1,16 +1,31 @@
 version: '3'
 services:
   mongodb:
-    image: pvgomes/datomic:latest
-    container_name: datomic
+    image: mongo:latest
+    container_name: mongodb
     ports:
-      - "4334"
-      - "4336"
+      - "27017:27017"
     networks:
       - production-network
-    environment:
-      - DATOMIC_PASSWORD=datomic
-      - ADMIN_PASSWORD=admin
+  dump:
+    build: ./docker/dump
+    depends_on:
+      - "mongodb"
+    networks:
+      - production-network
+#  app:
+#    build:
+#      dockerfile: ./docker/app/Dockerfile
+#      context: .
+#    container_name: app
+#    volumes:
+#     - .:/usr/src/app
+#    ports:
+#      - "42487"
+#    networks:
+#      - production-network
+#    depends_on:
+#      - "mongodb"
 networks:
   production-network:
     driver: bridge

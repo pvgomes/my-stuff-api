@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Macbook Pro ",
+    "description": "macbook personal used to home work",
+    "images": [
+      "lalala.jpg",
+      "lalala.jpg",
+      "lalala.jpg",
+      "lalala.jpg"
+    ],
+    "owner": 1,
+    "place": 1
+  },
+  {
+    "name": "Magic mouse",
+    "description": "magic mouse sem fio",
+    "images": [
+      "lalala.jpg",
+      "lalala.jpg",
+      "lalala.jpg",
+      "lalala.jpg"
+    ],
+    "owner": 1,
+    "place": 1
+  }
+]
