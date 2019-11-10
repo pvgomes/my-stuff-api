@@ -4,6 +4,6 @@
 [stuff]
 [place]
 
-owner -> stuff : has
+owner --> stuff : has
 stuff -> place : inside
 @enduml

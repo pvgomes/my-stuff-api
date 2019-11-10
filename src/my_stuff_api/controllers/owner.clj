@@ -11,7 +11,6 @@
   (->> (owner-storage/all)
       (map parse-response)))
 
-
 (defn by-owner-id
   [owner-id]
   (-> owner-id
