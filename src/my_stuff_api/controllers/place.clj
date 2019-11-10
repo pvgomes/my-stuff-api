@@ -7,7 +7,8 @@
   (assoc place-response :_id (str (:_id place-response))))
 
 (defn all []
-  (place-storage/all))
+  (->> (place-storage/all)
+       (map parse-response)))
 
 (defn by-place-id
   [place-id]

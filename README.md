@@ -1,15 +1,15 @@
 # my-stuff-api
 
 
-#### Run
-`lein run`
+#### Setup database
+`docker-compose up -d`
+
+#### Setup api
+`lein ring server-headless`
 
 #### Endpoints
-`curl http://localhost:8080`
+`curl http://localhost:3000`
 
-
-#### Setup
-`docker-compose up`
 
 **run tests**
 
@@ -18,9 +18,6 @@
 coverage
 
 `lein cloverage --runner :midje`
-
-**up server locally**
-`lein ring server-headless`
 
 
 ### Mongodb

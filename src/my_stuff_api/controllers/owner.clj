@@ -8,7 +8,9 @@
   (assoc owner-response :_id (str (:_id owner-response))))
 
 (defn all []
-  (owner-storage/all))
+  (->> (owner-storage/all)
+      (map parse-response)))
+
 
 (defn by-owner-id
   [owner-id]
